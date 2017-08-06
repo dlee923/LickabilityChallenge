@@ -30,13 +30,12 @@ class ThumbnailCV: UICollectionViewController, UICollectionViewDelegateFlowLayou
     
     let highlightThumbnailScale: CGFloat = 1.5
     
+    let thumbnailRefresher = ThumbnailRefresher(frame: .zero)
+    
     var swatches: [Swatch]? {
         didSet {
             print("thumbnail swatches changed")
             self.collectionView?.reloadData()
-//            self.moveCellsOnSceen(isRemoving: false) {
-//                self.collectionView?.reloadData()
-//            }
         }
     }
     
@@ -45,6 +44,9 @@ class ThumbnailCV: UICollectionViewController, UICollectionViewDelegateFlowLayou
         self.collectionView?.register(ThumbnailCVCell.self, forCellWithReuseIdentifier: thumbnailCell)
         self.collectionView?.backgroundColor = globalBackgroundColor
         self.collectionView?.clipsToBounds = false
+        
+        thumbnailRefresher.mainVC = self.mainVC
+        self.collectionView?.refreshControl = thumbnailRefresher
     }
 
     // MARK: UICollectionViewDataSource
@@ -57,8 +59,7 @@ class ThumbnailCV: UICollectionViewController, UICollectionViewDelegateFlowLayou
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: thumbnailCell, for: indexPath) as? ThumbnailCVCell {
-            cell.image.image = nil
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: thumbnailCell, for: indexPath) as? ThumbnailCVCell {            
             cell.mainVC = self.mainVC
             cell.swatch = swatches?[indexPath.item]
             return cell
@@ -115,41 +116,6 @@ class ThumbnailCV: UICollectionViewController, UICollectionViewDelegateFlowLayou
         // left right border spacing
         guard let inset = mainVC?.thumbnailCVInset else { return 0 }
         return inset
-    }
-    
-    func moveCellsOnSceen(isRemoving: Bool, completion: () -> ()) {
-        if let thumbnails = self.collectionView?.visibleCells {
-            
-            if isRemoving {
-                var delay: Double = 0
-                for thumbnail in thumbnails {
-//                    print("moving thumbnail off")
-                    UIView.animate(withDuration: 0.1, delay: TimeInterval(0 + delay), options: UIViewAnimationOptions.curveEaseInOut, animations: {
-                        thumbnail.transform = CGAffineTransform(translationX: (self.mainVC?.view.frame.width)!, y: 0)
-                    })
-                    delay += 0.01
-                }
-            
-            } else {
-                for thumbnail in thumbnails {
-                    thumbnail.transform = CGAffineTransform(translationX: (self.mainVC?.view.frame.width)!, y: 0)
-//                    print("moving thumbnail offAtOnce")
-                }
-                var delay: Double = 0
-                DispatchQueue.global().asyncAfter(deadline: .now() + 0.1, execute: { 
-                    for thumbnail in thumbnails {
-//                        print("moving thumbnail on")
-                        UIView.animate(withDuration: 0.1, delay: TimeInterval(0 + delay), options: UIViewAnimationOptions.curveEaseInOut, animations: {
-                            thumbnail.transform = CGAffineTransform.identity
-                        })
-                        delay += 0.01
-                    }
-                })
-                
-            }
-        }
-        
-        completion()
     }
 
 }

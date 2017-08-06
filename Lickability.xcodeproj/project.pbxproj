@@ -21,8 +21,21 @@
 		7003EFB61F34E31600242979 /* GlobalAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7003EFB51F34E31600242979 /* GlobalAttributes.swift */; };
 		7003EFB81F34FECE00242979 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7003EFB71F34FECE00242979 /* DetailView.swift */; };
 		7003EFBA1F3505FD00242979 /* ThumbnailCVSelected.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7003EFB91F3505FD00242979 /* ThumbnailCVSelected.swift */; };
+		703AEDCC1F362E4800D2517B /* WebServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703AEDCB1F362E4800D2517B /* WebServiceTests.swift */; };
+		703AEDF01F36A04D00D2517B /* ThumbnailRefresher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703AEDEF1F36A04D00D2517B /* ThumbnailRefresher.swift */; };
+		703AEDF21F36AD1F00D2517B /* MainVCViewSetUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703AEDF11F36AD1F00D2517B /* MainVCViewSetUp.swift */; };
 		70FC3D381F36053500EC02EC /* DetailViewLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70FC3D371F36053500EC02EC /* DetailViewLabel.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		703AEDCE1F362E4800D2517B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7003EF821F34009500242979 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7003EF891F34009500242979;
+			remoteInfo = Lickability;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		7003EF8A1F34009500242979 /* Lickability.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lickability.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -41,11 +54,23 @@
 		7003EFB51F34E31600242979 /* GlobalAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalAttributes.swift; sourceTree = "<group>"; };
 		7003EFB71F34FECE00242979 /* DetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		7003EFB91F3505FD00242979 /* ThumbnailCVSelected.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThumbnailCVSelected.swift; sourceTree = "<group>"; };
+		703AEDC91F362E4800D2517B /* WebServiceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WebServiceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		703AEDCB1F362E4800D2517B /* WebServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServiceTests.swift; sourceTree = "<group>"; };
+		703AEDCD1F362E4800D2517B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		703AEDEF1F36A04D00D2517B /* ThumbnailRefresher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThumbnailRefresher.swift; sourceTree = "<group>"; };
+		703AEDF11F36AD1F00D2517B /* MainVCViewSetUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVCViewSetUp.swift; sourceTree = "<group>"; };
 		70FC3D371F36053500EC02EC /* DetailViewLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		7003EF871F34009500242979 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		703AEDC61F362E4800D2517B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -59,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				7003EF8C1F34009500242979 /* Lickability */,
+				703AEDCA1F362E4800D2517B /* WebServiceTests */,
 				7003EF8B1F34009500242979 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -67,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				7003EF8A1F34009500242979 /* Lickability.app */,
+				703AEDC91F362E4800D2517B /* WebServiceTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -106,12 +133,22 @@
 			name = "Web Service Calls";
 			sourceTree = "<group>";
 		};
+		703AEDCA1F362E4800D2517B /* WebServiceTests */ = {
+			isa = PBXGroup;
+			children = (
+				703AEDCB1F362E4800D2517B /* WebServiceTests.swift */,
+				703AEDCD1F362E4800D2517B /* Info.plist */,
+			);
+			path = WebServiceTests;
+			sourceTree = "<group>";
+		};
 		70FC3D321F3603B800EC02EC /* Thumbnails */ = {
 			isa = PBXGroup;
 			children = (
 				7003EFA31F3403A600242979 /* ThumbnailCV.swift */,
 				7003EFB91F3505FD00242979 /* ThumbnailCVSelected.swift */,
 				7003EFA91F349E3500242979 /* ThumbnailCVCell.swift */,
+				703AEDEF1F36A04D00D2517B /* ThumbnailRefresher.swift */,
 			);
 			name = Thumbnails;
 			sourceTree = "<group>";
@@ -129,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				7003EF8F1F34009500242979 /* MainVC.swift */,
+				703AEDF11F36AD1F00D2517B /* MainVCViewSetUp.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -170,6 +208,24 @@
 			productReference = 7003EF8A1F34009500242979 /* Lickability.app */;
 			productType = "com.apple.product-type.application";
 		};
+		703AEDC81F362E4800D2517B /* WebServiceTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 703AEDD01F362E4800D2517B /* Build configuration list for PBXNativeTarget "WebServiceTests" */;
+			buildPhases = (
+				703AEDC51F362E4800D2517B /* Sources */,
+				703AEDC61F362E4800D2517B /* Frameworks */,
+				703AEDC71F362E4800D2517B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				703AEDCF1F362E4800D2517B /* PBXTargetDependency */,
+			);
+			name = WebServiceTests;
+			productName = WebServiceTests;
+			productReference = 703AEDC91F362E4800D2517B /* WebServiceTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -184,6 +240,12 @@
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = 76EM9P9GMZ;
 						ProvisioningStyle = Automatic;
+					};
+					703AEDC81F362E4800D2517B = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 76EM9P9GMZ;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 7003EF891F34009500242979;
 					};
 				};
 			};
@@ -201,6 +263,7 @@
 			projectRoot = "";
 			targets = (
 				7003EF891F34009500242979 /* Lickability */,
+				703AEDC81F362E4800D2517B /* WebServiceTests */,
 			);
 		};
 /* End PBXProject section */
@@ -212,6 +275,13 @@
 			files = (
 				7003EF981F34009500242979 /* LaunchScreen.storyboard in Resources */,
 				7003EF951F34009500242979 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		703AEDC71F362E4800D2517B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,12 +303,30 @@
 				7003EFAA1F349E3500242979 /* ThumbnailCVCell.swift in Sources */,
 				7003EFB61F34E31600242979 /* GlobalAttributes.swift in Sources */,
 				70FC3D381F36053500EC02EC /* DetailViewLabel.swift in Sources */,
+				703AEDF01F36A04D00D2517B /* ThumbnailRefresher.swift in Sources */,
 				7003EFA81F34058900242979 /* WebService.swift in Sources */,
 				7003EFA41F3403A600242979 /* ThumbnailCV.swift in Sources */,
+				703AEDF21F36AD1F00D2517B /* MainVCViewSetUp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		703AEDC51F362E4800D2517B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				703AEDCC1F362E4800D2517B /* WebServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		703AEDCF1F362E4800D2517B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7003EF891F34009500242979 /* Lickability */;
+			targetProxy = 703AEDCE1F362E4800D2517B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		7003EF961F34009500242979 /* LaunchScreen.storyboard */ = {
@@ -373,6 +461,34 @@
 			};
 			name = Release;
 		};
+		703AEDD11F362E4800D2517B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 76EM9P9GMZ;
+				INFOPLIST_FILE = WebServiceTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = dlee923.WebServiceTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Lickability.app/Lickability";
+			};
+			name = Debug;
+		};
+		703AEDD21F362E4800D2517B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 76EM9P9GMZ;
+				INFOPLIST_FILE = WebServiceTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = dlee923.WebServiceTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Lickability.app/Lickability";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -390,6 +506,15 @@
 			buildConfigurations = (
 				7003EF9D1F34009500242979 /* Debug */,
 				7003EF9E1F34009500242979 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		703AEDD01F362E4800D2517B /* Build configuration list for PBXNativeTarget "WebServiceTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				703AEDD11F362E4800D2517B /* Debug */,
+				703AEDD21F362E4800D2517B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

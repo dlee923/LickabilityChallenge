@@ -50,6 +50,10 @@ class ThumbnailCVCell: UICollectionViewCell {
         self.layer.borderColor = globalBackgroundColor.cgColor
     }
     
+    override func prepareForReuse() {
+        image.image = nil
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setUpImage()

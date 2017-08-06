@@ -29,7 +29,13 @@ class MainVC: UIViewController {
         didSet {
             // load color picker - and first set of thumbnails
             pickerView.mainVCSwatches = self.swatches
-            thumbnailCVClass.swatches = swatches?.first
+            
+            let thumbnailSwatches = swatches?[pickerView.selectedRow(inComponent: 0)]
+            thumbnailCVClass.swatches = thumbnailSwatches
+            
+            if let albumID = thumbnailSwatches?.first?.albumId {
+                self.pickerViewAlbumLabel.text = "Album No. \(albumID)"
+            }
         }
     }
 
@@ -47,7 +53,7 @@ class MainVC: UIViewController {
         return _pickerView
     }()
     
-    let pickerViewHeightMultiple: CGFloat = 0.125
+    let pickerViewHeightMultiple: CGFloat = 0.15
     let pickerViewContainer: UIView = {
         let _pickerViewContainer = UIView()
         _pickerViewContainer.layer.shadowOffset = CGSize(width: 0.3, height: 0.3)
@@ -63,41 +69,30 @@ class MainVC: UIViewController {
     
     var pickerViewContainerHeight: CGFloat?
     
-    let imageCache = NSCache<AnyObject, AnyObject>()
+    let pickerViewAlbumLabel: UILabel = {
+        let _pickerViewAlbumLabel = UILabel()
+        _pickerViewAlbumLabel.font = UIFont(name: "futura", size: 12)
+        _pickerViewAlbumLabel.text = "Album No. "
+        _pickerViewAlbumLabel.textColor = globalBlackTintColor
+        _pickerViewAlbumLabel.textAlignment = .right
+        return _pickerViewAlbumLabel
+    }()
     
-    fileprivate func setUpPickerView() {
-        pickerViewContainerHeight = self.view.frame.height * pickerViewHeightMultiple
-        self.view.addSubview(pickerViewContainer)
-        pickerViewContainer.translatesAutoresizingMaskIntoConstraints = false
-        pickerViewContainer.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        pickerViewContainer.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -thumbnailCVInset).isActive = true
-        pickerViewContainer.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: pickerViewHeightMultiple).isActive = true
-        pickerViewContainer.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.95).isActive = true
-        
-        pickerViewContainer.addSubview(pickerViewBackground)
-        
-        pickerViewBackground.translatesAutoresizingMaskIntoConstraints = false
-        pickerViewBackground.centerXAnchor.constraint(equalTo: pickerViewContainer.centerXAnchor).isActive = true
-        pickerViewBackground.centerYAnchor.constraint(equalTo: pickerViewContainer.centerYAnchor).isActive = true
-        pickerViewBackground.heightAnchor.constraint(equalTo: pickerViewContainer.heightAnchor).isActive = true
-        pickerViewBackground.widthAnchor.constraint(equalTo: pickerViewContainer.widthAnchor).isActive = true
-        
-        pickerViewContainer.addSubview(pickerView)
-        pickerView.translatesAutoresizingMaskIntoConstraints = false
-        pickerView.centerXAnchor.constraint(equalTo: pickerViewContainer.centerXAnchor).isActive = true
-        pickerView.centerYAnchor.constraint(equalTo: pickerViewContainer.centerYAnchor).isActive = true
-        pickerView.heightAnchor.constraint(equalTo: pickerViewContainer.widthAnchor, multiplier: 1.25).isActive = true
-        pickerView.widthAnchor.constraint(equalTo: pickerViewContainer.heightAnchor, multiplier: 1).isActive = true
-    }
+    let pickerViewTitle: UILabel = {
+        let _pickerViewTitle = UILabel()
+        _pickerViewTitle.font = UIFont(name: "futura", size: 12)
+        _pickerViewTitle.text = "Select Your Album Below"
+        _pickerViewTitle.textColor = globalBlackTintColor
+        _pickerViewTitle.textAlignment = .left
+        return _pickerViewTitle
+    }()
     
-    fileprivate func setUpThumbNailImages() {
-        guard let thumbnailCV = thumbnailCVClass.collectionView else { return }
-        self.view.insertSubview(thumbnailCV, belowSubview: pickerViewContainer)
-        thumbnailCV.translatesAutoresizingMaskIntoConstraints = false
-        thumbnailCV.topAnchor.constraint(equalTo: self.view.topAnchor, constant: thumbnailCVInset + 20).isActive = true
-        thumbnailCV.bottomAnchor.constraint(equalTo: pickerViewContainer.topAnchor).isActive = true
-        thumbnailCV.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: thumbnailCVInset).isActive = true
-        thumbnailCV.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -thumbnailCVInset).isActive = true
-    }
+    let backgroundCoverView = UIView()
+    
+    let imageCache: NSCache<AnyObject, AnyObject> = {
+        let _imageCache = NSCache<AnyObject, AnyObject>()
+        _imageCache.countLimit = 200
+        return _imageCache
+    }()
 }
 

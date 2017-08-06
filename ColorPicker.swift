@@ -30,10 +30,7 @@ class ColorPicker: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource {
     
     var albumSwatches: [Swatch]? {
         didSet {
-            self.reloadAllComponents()
-//            if let count = albumSwatches?.count {
-//                self.selectRow(count / 2, inComponent: 1, animated: true)
-//            }            
+            self.reloadAllComponents()            
         }
     }
     
@@ -74,15 +71,14 @@ class ColorPicker: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         // sent appropriate swatch array to thumbnail collectionView
         mainVC?.thumbnailCVClass.swatches = mainVCSwatches?[row]
+        if let albumID = mainVCSwatches?[row].first?.albumId {
+            mainVC?.pickerViewAlbumLabel.text = "Album No. \(albumID)"
+        }
         
         // animate thumbnail collectionView back to original start
         UIView.animate(withDuration: 0.2) {
             self.mainVC?.thumbnailCVClass.collectionView?.contentOffset = CGPoint.zero
         }
-        
-//        mainVC?.thumbnailCVClass.moveCellsOnSceen(isRemoving: true, completion: { 
-//            
-//        })
     }
     
     

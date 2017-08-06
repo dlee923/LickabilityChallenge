@@ -33,11 +33,7 @@ class ColorPickerView: UIView {
         return _image
     }()
     
-    fileprivate func setUpView() {
-//        self.layer.cornerRadius = 4
-//        self.layer.borderWidth = 1.5
-//        self.layer.borderColor = UIColor(white: 0.2, alpha: 1).cgColor
-        
+    fileprivate func setUpView() {        
         self.clipsToBounds = true        
         self.transform = CGAffineTransform(rotationAngle: 90 * (.pi/180))
         
